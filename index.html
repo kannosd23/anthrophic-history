@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthropic - Kuruluş Tariçesi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #888;
+            font-weight: 400;
+        }
+
+        section {
+            margin-bottom: 70px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-left: 4px solid #00d4ff;
+            padding-left: 20px;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), transparent);
+            padding-left: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 35px 0 18px 0;
+            color: #00ff88;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+            margin: 35px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #00d4ff, #00ff88);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            background: #1a1a2e;
+            border: 3px solid #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            background: #00d4ff;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+        }
+
+        .timeline-item.active::before {
+            background: #00ff88;
+            border-color: #00ff88;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
+        }
+
+        .date {
+            font-size: 15px;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 8px;
+            display: block;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .key-people {
+            display: grid;
+            gap: 15px;
+        }
+
+        .person {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .person:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .person-name {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .person-role {
+            font-size: 14px;
+            color: #00ff88;
+            font-style: italic;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.05));
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            margin-top: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .mission-box:hover {
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .values-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .values-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .values-list li:last-child {
+            border-bottom: none;
+        }
+
+        .values-list li:hover {
+            background: rgba(255, 255, 255, 0.03);
+            padding-left: 10px;
+        }
+
+        .values-list strong {
+            color: #00d4ff;
+            margin-right: 15px;
+            min-width: 140px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.2));
+            color: #00ff88;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            margin: 4px 8px 4px 0;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: #0f0f1a;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .footer-buttons {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a2e;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .modal-title {
+            color: #00d4ff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .modal-text {
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .close-btn {
+            background: #00d4ff;
+            color: #0f0f1a;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .scroll-indicator:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            header {
+                padding: 30px 20px;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline-item::before {
+                left: -29px;
+            }
+
+            .date {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ANTHROPIC</h1>
+            <p class="subtitle">Yapay Zeka Güvenliği ve Arayüz Tasarımı</p>
+        </header>
+
+        <section>
+            <h2>🚀 Kuruluş</h2>
+            <p>Anthropic, 2021 yılında Dario Amodei ve Daniela Amodei kardeşler tarafından kurulan bir yapay zeka araştırma şirketidir. Kuruluş amacı, yapay zekayı güvenli, anlaşılır ve faydalı hale getirmek üzerine çalışmaktadır.</p>
+
+            <button class="btn" onclick="openModal('kaynak')">📚 Kaynaklara Git</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('ekip')">👥 Ekibi Gör</button>
+
+            <h3>Kurucu Ekib</h3>
+            <div class="key-people">
+                <div class="person" onclick="showPersonInfo('Dario Amodei', 'Başkan ve CEO')">
+                    <div class="person-name">Dario Amodei</div>
+                    <div class="person-role">Başkan ve CEO</div>
+                </div>
+                <div class="person" onclick="showPersonInfo('Daniela Amodei', 'Yardımcı Başkanı ve CTO')">
+                    <div class="person-name">Daniela Amodei</div>
+                    <div class="person-role">Yardımcı Başkanı ve CTO</div>
+                </div>
+                <div class="person" onclick="showPersonInfo('Tom Brown', 'Baş Bilim İnsanı')">
+                    <div class="person-name">Tom Brown</div>
+                    <div class="person-role">Baş Bilim İnsanı</div>
+                </div>
+                <div class="person" onclick="showPersonInfo('Chris Olah', 'Uzman Bilim İnsanı')">
+                    <div class="person-name">Chris Olah</div>
+                    <div class="person-role">Uzman Bilim İnsanı</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ekip">
+            <h2>📅 Kuruluş Hikayesi</h2>
+            <div class="timeline">
+                <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                    <span class="date">2021</span>
+                    <div class="timeline-content">
+                        <strong>Kuruluş:</strong> Anthropic, OpenAI'den ayrılan bir grup araştırmacı tarafından San Francisco'da kuruldu. Kurucular, yapay zeka güvenliği üzerine derinlemesine çalışmalar yapmak istediler.
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                    <span class="date">2021 - 2022</span>
+                    <div class="timeline-content">
+                        <strong>İlk Yıllar:</strong> Şirket, yapay zeka sistemlerinin karar mekanizmalarını anlama ve güvenli hale getirme üzerine araştırmalar başlattı. Claude gibi modellerin geliştirilmesine başlandı.
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                    <span class="date">2023</span>
+                    <div class="timeline-content">
+                        <strong>Claude Başarısı:</strong> Anthropic, Claude adlı dil modelini piyasaya sürdü. Model, güçlü performansı ve güvenli tasarımı ile dikkat çekti.
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                    <span class="date">2023 - 2024</span>
+                    <div class="timeline-content">
+                        <strong>Genişleme:</strong> Şirket, yapay zeka araştırma ekibi büyüdü ve Google, Zoom ve Quora gibi şirketlerden yatırım aldı. Ana hedef, yapay zekayı güvence altına almak oldu.
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                    <span class="date">2024</span>
+                    <div class="timeline-content">
+                        <strong>Büyüme ve Gelişme:</strong> Anthropic, Cloud Platform'ını ve Claude Pro hizmetini tanıttı. Şirket, yapay zeka güvenliği alanında lider bir rol oynamaya devam ediyor.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🎯 Misyon ve Değerler</h2>
+            <div class="mission-box">
+                <p>Anthropic'ın misyonu, güvenli ve faydalı yapay zeka sistemleri geliştirmektir. Şirket, yapay zeka araştırmasında "transparent, accountable ve güvence altına alınmış" bir yaklaşıma odaklanmaktadır.</p>
+
+                <h3>Çalışma Alanları</h3>
+                <ul class="values-list">
+                    <li><strong>Yapay Zeka Güvenliği:</strong> Yapay Zekanın Potansiyel Tehlikelerinin Anlaşılması ve Önlenmesi</li>
+                    <li><strong>Yapay Zeka Arayüzü:</strong> İnsanlarla Etkileşimin Güvenli ve Anlaşılır Olması</li>
+                    <li><strong>Açık Araştırma:</strong> Araştırma Sonuçlarının Paylaşılması</li>
+                    <li><strong>Sorumluluk:</strong> Tüm Yapay Zeka Uygulamalarının Etik Bütünlüğünü Sağlamak</li>
+                </ul>
+
+                <h3>Değerlerimiz</h3>
+                <div style="margin-top: 15px;">
+                    <span class="tag">✨ İnovasyon</span>
+                    <span class="tag">🔒 Güvenlik</span>
+                    <span class="tag">🤝 Şeffaflık</span>
+                    <span class="tag">🌍 Etki</span>
+                    <span class="tag">🧠 Düşünce</span>
+                    <span class="tag">🎯 Odak</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Teknoloji ve Ürünler</h2>
+            <p>Anthropic, Claude adlı dil modelleri ve Cloud Platform'u geliştirmektedir. Claude, güçlü dil yetenekleri ve güvenli tasarımı ile bilinmektedir. Şirketin teknolojisi, yapay zeka güvenliğini ön planda tutan bir yaklaşım benimsemektedir.</p>
+
+            <button class="btn" onclick="showTechnologyInfo()">🔧 Teknoloji Detayları</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('durum')">📊 Şu Anki Durum</button>
+
+            <h3>Temel Teknolojiler</h3>
+            <div style="margin-top: 15px;">
+                <span class="tag">Transformer Mimarisi</span>
+                <span class="tag">Dil Modeli</span>
+                <span class="tag">Yapay Zeka Güvenliği</span>
+                <span class="tag">Cloud Platform</span>
+                <span class="tag">API Entegrasyonu</span>
+            </div>
+        </section>
+
+        <section id="durum">
+            <h2>🌍 Konum ve Çalışma</h2>
+            <p>Anthropic, Kaliforniya'daki San Francisco merkezlidir. Şirket, yapay zeka araştırması ve geliştirme konusunda küresel bir etkisi bulunmaktadır.</p>
+
+            <div class="mission-box">
+                <h3>Şu anki Durum</h3>
+                <p>Şirket, yapay zeka güvenliği konusunda aktif çalışmalarını sürdürmektedir. Claude modelleri kullanılmaya devam edilmekte ve yeni geliştirmeler yapılma aşamasındadır.</p>
+
+                <h3>Şehir: San Francisco, CA</h3>
+                <p>Kaliforniya, ABD</p>
+
+                <button class="btn" onclick="openMap()">🗺️ Haritayı Göster</button>
+            </div>
+        </section>
+
+        <div class="footer-buttons">
+            <button class="btn" onclick="refreshSite()">🔄 Yenile</button>
+            <button class="btn btn-secondary" onclick="scrollToTop()">🔝 Yukarı Çık</button>
+        </div>
+    </div>
+
+    <div class="scroll-indicator" onclick="scrollToTop()">↑</div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modal-title"></h3>
+            <p class="modal-text" id="modal-text"></p>
+            <button class="close-btn" onclick="closeModal()">Kapat</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Anthropic hakkında bilgi kaynakları: <a href="https://www.anthropic.com" target="_blank" style="color: #00d4ff;">www.anthropic.com</a></p>
+        <p style="margin-top: 10px;">© 2024 - Claude ile oluşturuldu | BY Cannox</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Timeline toggle
+        function toggleTimelineItem(item) {
+            item.classList.toggle('active');
+            createParticle(event);
+        }
+
+        // Person info modal
+        function showPersonInfo(name, role) {
+            document.getElementById('modal-title').textContent = name;
+            document.getElementById('modal-text').textContent = `Rol: ${role}\n\nAnthropic ekibinin önemli bir üyesidir. Şirketin kuruluşundan bu yana kritik roller üstlenmektedir.`;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        // Technology info
+        function showTechnologyInfo() {
+            document.getElementById('modal-title').textContent = 'Teknoloji Detayları';
+            document.getElementById('modal-text').textContent = 'Anthropic, Transformer mimarisine dayalı dil modelleri geliştirmektedir. Claude modelleri, güçlü dil yetenekleri ve güvenli tasarımı ile bilinir. Şirket, yapay zeka güvenliği üzerine araştırmalar yapmaktadır.';
+            document.getElementById('modal').classList.add('active');
+        }
+
+        // Map
+        function openMap() {
+            window.open('https://www.google.com/maps?q=San+Francisco+CA', '_blank');
+        }
+
+        // Refresh
+        function refreshSite() {
+            location.reload();
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll to section
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Source
+        function openModal(type) {
+            if (type === 'kaynak') {
+                window.open('https://www.anthropic.com', '_blank');
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close modal on background click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Particle effect
+        function createParticle(e) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            document.body.appendChild(particle);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 100 + 50;
+
+            particle.animate([
+                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                { transform: `translate(${Math.cos(angle) * velocity}px, ${Math.sin(angle) * velocity}px) scale(0)`, opacity: 0 }
+            ], {
+                duration: 500,
+                easing: 'ease-out'
+            }).onfinish = () => particle.remove();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
